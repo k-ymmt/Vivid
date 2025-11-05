@@ -51,7 +51,7 @@ static NSData * YUCICLAHETransformLUTForContrastLimitedHistogram(vImagePixelCoun
     static CIKernel *kernel;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:NSStringFromClass([YUCICLAHE class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:NSStringFromClass([YUCICLAHE class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernel = [CIKernel kernelWithString:kernelString];
     });
     return kernel;
@@ -61,7 +61,7 @@ static NSData * YUCICLAHETransformLUTForContrastLimitedHistogram(vImagePixelCoun
     static CIColorKernel *kernel;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:@"YUCIRGBToHSL" withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:@"YUCIRGBToHSL" withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernel = [CIColorKernel kernelWithString:kernelString];
     });
     return kernel;
@@ -71,7 +71,7 @@ static NSData * YUCICLAHETransformLUTForContrastLimitedHistogram(vImagePixelCoun
     static CIColorKernel *kernel;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:@"YUCIHSLToRGB" withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:@"YUCIHSLToRGB" withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernel = [CIColorKernel kernelWithString:kernelString];
     });
     return kernel;

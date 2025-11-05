@@ -6,7 +6,7 @@
 //  Copyright © 2016 YuAo. All rights reserved.
 //
 
-import CoreImage
+@preconcurrency import CoreImage
 
 class FilterStore {
     static let filters: [CIFilter?] = {
@@ -16,14 +16,14 @@ class FilterStore {
         
         filters.append(CIFilter(
             name: "YUCIColorLookup",
-            withInputParameters:[
+            parameters:[
                 "inputColorLookupTable": CIImage(contentsOf: Bundle.main.url(forResource: "color_lookup_miss_etikate", withExtension: "png")!)!
             ])
         )
         
         filters.append(CIFilter(
             name: "YUCIRGBToneCurve",
-            withInputParameters:[
+            parameters:[
                 "inputRGBCompositeControlPoints": [CIVector(x: 0, y: 0),CIVector(x: 0.5, y: 0.7), CIVector(x: 1, y: 1)]
             ])
         )
@@ -38,7 +38,7 @@ class FilterStore {
         
         filters.append(CIFilter(
             name: "YUCIStarfieldGenerator",
-            withInputParameters:[
+            parameters:[
                 "inputExtent": CIVector(cgRect: CGRect(x: 0, y: 0, width: 1200, height: 800)),
                 "inputTime": 0
             ])
@@ -46,7 +46,7 @@ class FilterStore {
         
         filters.append(CIFilter(
             name: "YUCIBlobsGenerator",
-            withInputParameters:[
+            parameters:[
                 "inputExtent": CIVector(cgRect: CGRect(x: 0, y: 0, width: 1200, height: 800)),
                 "inputTime": 6.0
             ])
@@ -60,7 +60,7 @@ class FilterStore {
         
         filters.append(CIFilter(name: "YUCICLAHE"))
         
-        filters.append(CIFilter(name: "YUCISkyGenerator", withInputParameters: [
+        filters.append(CIFilter(name: "YUCISkyGenerator", parameters: [
             "inputExtent": CIVector(cgRect: CGRect(x: 0, y: 0, width: 1200, height: 800))
         ]))
         

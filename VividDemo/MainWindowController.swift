@@ -42,7 +42,7 @@ class MainWindowController: NSWindowController {
         openPanel.allowsMultipleSelection = false
         openPanel.allowedFileTypes = [kUTTypeJPEG as String, kUTTypePNG as String]
         openPanel.beginSheetModal(for: self.window!) { (result) -> Void in
-            if result == NSFileHandlingPanelOKButton {
+            if result.rawValue == NSFileHandlingPanelOKButton {
                 let URL = openPanel.urls.first!
                 let previewViewController = self.contentViewController as! FilterPreviewViewController
                 previewViewController.replaceInputImageWithItemAtURL(URL)

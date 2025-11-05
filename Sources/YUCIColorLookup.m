@@ -29,7 +29,7 @@
     static CIKernel *kernel;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:NSStringFromClass([YUCIColorLookup class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:NSStringFromClass([YUCIColorLookup class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernel = [CIKernel kernelWithString:kernelString];
     });
     return kernel;
@@ -44,7 +44,7 @@
 
 - (CIImage *)inputColorLookupTable {
     if (!_inputColorLookupTable) {
-        _inputColorLookupTable = [CIImage imageWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForResource:@"YUCIColorLookupTableDefault" withExtension:@"png"]];
+        _inputColorLookupTable = [CIImage imageWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:@"YUCIColorLookupTableDefault" withExtension:@"png"]];
     }
     return _inputColorLookupTable;
 }

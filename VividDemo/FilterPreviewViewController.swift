@@ -12,7 +12,7 @@ import Vivid
 class FilterPreviewViewController: NSViewController, CAAnimationDelegate {
     @IBOutlet weak var imageView: NSImageView!
     
-    let context = CIContext(options: [kCIContextWorkingColorSpace: CGColorSpace(name: CGColorSpace.sRGB)!])
+    let context = CIContext(options: [CIContextOption.workingColorSpace: CGColorSpace(name: CGColorSpace.sRGB)!])
     var inputCIImage: CIImage!
     
     var inputImage: NSImage!

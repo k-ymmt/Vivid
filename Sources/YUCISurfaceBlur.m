@@ -45,7 +45,7 @@ static NSDictionary *YUCISurfaceBlurKernels;
             gaussianWeightsSetupProgram = [gaussianWeightsSetupProgram stringByAppendingFormat:@"GAUSSIAN_WEIGHTS[%@] = GAUSSIAN_WEIGHTS[%@] = %@; \n",@(radius - 1 - i),@(radius - 1 + i),wights[i]];
         }
         
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:NSStringFromClass([YUCISurfaceBlur class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:NSStringFromClass([YUCISurfaceBlur class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernelString = [kernelString stringByReplacingOccurrencesOfString:@"MACRO_SAMPLES_COUNT" withString:@(radius * 2).stringValue];
         kernelString = [kernelString stringByReplacingOccurrencesOfString:@"MACRO_SETUP_GAUSSIAN_WEIGHTS" withString:gaussianWeightsSetupProgram];
         kernel = [CIKernel kernelWithString:kernelString];

@@ -52,8 +52,8 @@ static NSDictionary *YUCIBilateralFilterKernels;
         for (NSInteger i = 0; i < wights.count; ++i) {
             setupString = [setupString stringByAppendingFormat:@"GAUSSIAN_WEIGHTS[%@] = %@; \n",@(i),@([wights[i] doubleValue] * scale)];
         }
-        
-        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self] URLForResource:NSStringFromClass([YUCIBilateralFilter class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
+
+        NSString *kernelString = [[NSString alloc] initWithContentsOfURL:[SWIFTPM_MODULE_BUNDLE URLForResource:NSStringFromClass([YUCIBilateralFilter class]) withExtension:@"cikernel"] encoding:NSUTF8StringEncoding error:nil];
         kernelString = [kernelString stringByReplacingOccurrencesOfString:@"MACRO_GAUSSIAN_SAMPLES" withString:@(sampleCount).stringValue];
         kernelString = [kernelString stringByReplacingOccurrencesOfString:@"MACRO_SETUP_GAUSSIAN_WEIGHTS" withString:setupString];
         kernel = [CIKernel kernelWithString:kernelString];
